@@ -13,6 +13,7 @@ export class CarComponent implements OnInit {
   cars: Car[] = [];
   carDetails: CarDetail[] = [];
   currentCar:Car;
+  imageBasePath = "https://localhost:44326/images/"
 
   dataLoaded = false;
 
@@ -57,23 +58,13 @@ export class CarComponent implements OnInit {
     })
   }
 
-  // getCarDetails() {
-  //   this.carService.getCarDetails().subscribe(response=>{
-  //     this.carDetails = response.data;
-  //     this.dataLoaded = true;
+  getCarImage(car:Car){
 
-  //   })
-  // }
-
-  // setCurrentCar(car:Car){
-  //   this.currentCar=car;
-  // }
-
-  // getCurrentCarClass(car: Car) {
-  //   if (car == this.currentCar) {
-  //     return "table-active"
-  //   } else {
-  //     return "table"
-  //   }
-  // }
+    if(car.imagePath){
+      return car.imagePath
+    }
+    else{
+      return 'default.jpg'
+    }
+  }
 }
