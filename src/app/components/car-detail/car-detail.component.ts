@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
+import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
+import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
+
 
 @Component({
   selector: 'app-car-detail',
@@ -11,13 +14,16 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car-detail.component.css']
 })
 export class CarDetailComponent implements OnInit {
-  cars: Car[] = [];
+  cars: Car[]=[];
   carImages:CarImage[]=[];
   currentImage : CarImage;
   dataLoaded=false;
   imageBasePath = "https://localhost:44326/images/"
+  carImageDefault= "https://localhost:44326/images/default.jpg"
+
 
   constructor(
+    private carDetailService:CarDetailService,
     private carService:CarService,
     private imageService:CarImageService,
     private activatedRoute:ActivatedRoute,
@@ -29,6 +35,7 @@ export class CarDetailComponent implements OnInit {
        this.getCarDetail(params["id"])
        this.getImagesByCarId(params["id"])
       }
+
   })
   }
  
@@ -39,11 +46,10 @@ export class CarDetailComponent implements OnInit {
       console.log(response)
     })
   }
-
+  
   getImagesByCarId(id:number){
     this.imageService.getCarImages(id).subscribe(response => {
       this.carImages=response.data;
-      this.dataLoaded=true;
     })
   }
 
@@ -62,6 +68,5 @@ export class CarDetailComponent implements OnInit {
       return ""
     }
   }
-  
   
 }

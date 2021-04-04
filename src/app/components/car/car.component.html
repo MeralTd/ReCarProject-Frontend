@@ -1,14 +1,43 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
+
+<!-- <div class="mb-3">
+  <label for="filterText" class="form-label">Ürün ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" 
+  placeholder="arama ifadesi giriniz">
+</div> -->
+<div class="mb-3">
+  <input class="form-control me-2" [(ngModel)]="filterText"  id="filterText"  type="search" placeholder="Search" aria-label="Search">
+</div>
+<div *ngIf="filterText.length>2" class="alert alert-success">
+  {{filterText}} aradınız.
+</div>
+
+
+<!-- <div class="row g-2">
+  <div class="col-md">
+    <app-color></app-color>
+  </div>
+  <div class="col-md">
+    <app-brand></app-brand>
+  </div>
+</div> -->
+
+<app-car-filter></app-car-filter>
+<br>
+
+
 <div class="row">
-    <div *ngFor="let car of cars" class="col-md-4">
+    <div *ngFor="let car of cars | filterPipe:filterText" class="col-md-4">
       <div class="card" style="width: 14rem;">
         <img src="{{imageBasePath}}{{getCarImage(car)}}" class="card-img-top" alt={{car.description}}>
         <div class="card-body">
           <h5 class="card-title">{{ car.description }}</h5>
         </div>
         <ul class="list-group list-group-flush">
+          <li class="list-group-item">Brand: {{ car.brandName }}</li>
+          <li class="list-group-item">Color: {{ car.colorName }}</li>
           <li class="list-group-item">Model Year: {{ car.modelYear }}</li>
           <li class="list-group-item">Daily Price: {{ car.dailyPrice }} ₺</li>
         </ul>

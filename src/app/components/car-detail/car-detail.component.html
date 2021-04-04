@@ -1,7 +1,6 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button *ngFor="let image of carImages;let i = index" type="button" data-bs-target="#carouselExampleIndicators" attr.data-bs-slide-to="{{i}}" [class]="getButtonClass(image)" aria-current="true" aria-label="Slide 1"></button>
-    
   </div>
   <div class="carousel-inner">
     <div *ngFor="let image of carImages" [class]="getCurrentImageClass(image)">
