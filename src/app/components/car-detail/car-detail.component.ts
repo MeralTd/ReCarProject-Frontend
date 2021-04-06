@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
-import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
-import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 
@@ -19,11 +17,15 @@ export class CarDetailComponent implements OnInit {
   currentImage : CarImage;
   dataLoaded=false;
   imageBasePath = "https://localhost:44326/images/"
-  carImageDefault= "https://localhost:44326/images/default.jpg"
 
-
+  minSelected:boolean;
+  minDate:Date = new Date();
+  rentTime:number;
+  rentDate:Date;
+  returnDate:Date;
+  maxDate:Date = new Date();
+  
   constructor(
-    private carDetailService:CarDetailService,
     private carService:CarService,
     private imageService:CarImageService,
     private activatedRoute:ActivatedRoute,
@@ -53,20 +55,21 @@ export class CarDetailComponent implements OnInit {
     })
   }
 
-  getCurrentImageClass(image:CarImage){
-    if(image==this.carImages[0]){
-      return "carousel-item active"
-    } else {
-      return "carousel-item"
+  getCarImage(car:CarImage){
+    if(car.imagePath){
+      return car.imagePath
     }
-  }
-
-  getButtonClass(image:CarImage){
-    if(image==this.carImages[0]){
-      return "active"
-    } else {
-      return ""
+    else{
+      return 'default.jpg'
     }
   }
   
+  selectMin(){
+    this.minSelected = true;
+    var date = new Date(this.rentDate);
+    date.setDate(date.getDate() + 1);
+    this.maxDate = date;
+    this.minDate = this.rentDate;
+  }
+
 }

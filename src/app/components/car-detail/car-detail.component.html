@@ -1,17 +1,16 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button *ngFor="let image of carImages;let i = index" type="button" data-bs-target="#carouselExampleIndicators" attr.data-bs-slide-to="{{i}}" [class]="getButtonClass(image)" aria-current="true" aria-label="Slide 1"></button>
-  </div>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div *ngFor="let image of carImages" [class]="getCurrentImageClass(image)">
-      <img src="{{imageBasePath}}{{image.imagePath}}" class="d-block w-100" width="640" height="480"  alt="Image">
+    <div class="carousel-item" *ngFor="let carimage of carImages; index as imgInd;" [ngClass]="{'active':imgInd==0}">
+      <!-- <img src="{{imageBasePath}}{{getCarImage(carimage)}}" class="card-img-top" alt=".."> -->
+      <img *ngIf="carimage.imagePath != null" src="{{imageBasePath}}{{carimage.imagePath}}" class="d-block w-100" alt="...">
     </div>
+
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
@@ -24,4 +23,52 @@
     <li class="list-group-item">Model Year: {{car.modelYear}}</li>
     <li class="list-group-item">Daily Price: {{car.dailyPrice}}</li>
   </ul>
+  <!-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#rentModal">
+    Aracı Kirala
+  </button> -->
+  <button routerLink="/rentals" type="button" class="btn btn-primary">Rent</button>
+
 </div>
+
+
+<!-- <div *ngFor="let car of cars"
+  class="modal fade" id="rentModal" tabindex="-1" aria-labelledby="rentModalLabel"aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rentModalLabel">{{car.brandName}} Aracı Kirala</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="dailyprice" class="form-label">Günlük Ücreti</label>
+          <input type="text" disabled class="form-control" id="dailyprice" [value]="car.dailyPrice">
+        </div>
+        <div class="mb-3">
+          <label for="brand" class="form-label">Marka</label>
+          <input type="text" disabled class="form-control" id="brand" [value]="car.brandName">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Model / Renk</label>
+          <input type="text" disabled class="form-control" id="name" [value]="car.description + '/' + car.colorName">
+        </div>
+        <div class="mb-3">
+          <label for="rentdate" class="form-label">Kiralama Tarihi</label>
+          <input type="date" [min]="minDate |date:'yyyy-MM-dd'" class="form-control" id="rentdate" (change)="selectMin()" [(ngModel)]="rentDate">
+        </div>
+        <div class="mb-3">
+          <label for="returndate" class="form-label">Dönüş Tarihi</label>
+          <input type="date" [disabled]="!minSelected"  [min]="maxDate |date:'yyyy-MM-dd'"  class="form-control" id="returndate" [(ngModel)]="returnDate">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Kapat
+        </button>
+        <button
+      type="button" data-bs-dismiss="modal" class="btn btn-success"> Kirala
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
