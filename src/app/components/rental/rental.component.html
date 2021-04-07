@@ -1,19 +1,93 @@
-
-  <!-- <table *ngIf="dataLoaded==true" class="table">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Car Name</th>
-          <th>Customer Name</th>
-          <th>Company Name</th>
-        </tr>
-      </thead>
-      <tr *ngFor="let rental of rentals">
-        <td>{{ rental.id }}</td>
-        <td>{{ rental.carName }}</td>
-        <td>{{ rental.customerName }}</td>
-        <td>{{ rental.companyName }}</td>
-      </tr>
-    </table> -->
-
-
+<div class="d-grid gap-2">
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#rentModal">
+      Aracı Kirala
+    </button>
+  </div>
+  
+  <!-- Modal -->
+  <div
+    class="modal fade" id="rentModal" tabindex="-1" aria-labelledby="rentModalLabel"aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rentModalLabel"> {{car.description}} | Aracı Kirala</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row mb-2">
+            <label for="example-date-input" class="col-4 col-form-label">Günlük Fiyat</label>
+            <div class="col-8">
+              <input
+                type="number"
+                disabled="disabled"
+                class="form-control"
+                [value]="car.dailyPrice"/>
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <label for="example-date-input" class="col-4 col-form-label">Müşteri</label>
+            <div class="col-8">
+              <select class="form-select" [(ngModel)]="customerId">
+                <option
+                  [ngValue]="customer.id"
+                  *ngFor="let customer of customers">
+                  {{ customer.companyName }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+             <label for = "brand" class="col-4 col-form-label">Brand</label>
+             <div class="col-8">
+               <input id="brand" type="text" readonly class="form-control" [value]="car.brandName">
+             </div>
+            </div>
+          <div class="form-group row mb-2">
+            <label for="color" class="col-4 col-form-label">Color</label>
+            <div class="col-8">
+              <input id="color" type="text" readonly class="form-control" [value] ="car.colorName">
+            </div>
+          </div>
+          
+          <div class="form-group row mb-2">
+            <label for="example-date-input" class="col-4 col-form-label">Başlangıç</label>
+            <div class="col-8">
+              <input
+                (change)="onChangeEvent($event)"
+                min="{{ getRentMinDate() }}"
+                [(ngModel)]="rentDate"
+                type="date"
+                class="form-control"
+                id="rent-date"
+                placeholder="Bir gün seçiniz."
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-date-input" class="col-4 col-form-label"
+              >Bitiş</label>
+            <div class="col-8">
+              <input
+                disabled="{{ !firstDateSelected }}"
+                min="{{ getReturnMinDate() }}"
+                max="{{ getReturnMaxDate() }}"
+                [(ngModel)]="returnDate"
+                type="date"
+                class="form-control"
+                id="return-date"
+                placeholder="Bir gün seçiniz."
+              />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Kapat
+          </button>
+          <button
+            data-bs-dismiss="modal" (click)="createRental()" type="button" class="btn btn-success"> Kirala
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

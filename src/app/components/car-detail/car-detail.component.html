@@ -1,7 +1,6 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item" *ngFor="let carimage of carImages; index as imgInd;" [ngClass]="{'active':imgInd==0}">
-      <!-- <img src="{{imageBasePath}}{{getCarImage(carimage)}}" class="card-img-top" alt=".."> -->
       <img *ngIf="carimage.imagePath != null" src="{{imageBasePath}}{{carimage.imagePath}}" class="d-block w-100" alt="...">
     </div>
 
@@ -17,7 +16,7 @@
 </div>
 
 <div>
-  <ul *ngFor="let car of cars" class="list-group list-group-flush">
+  <ul class="list-group list-group-flush">
     <li class="list-group-item">Brand: {{car.brandName}}</li>
     <li class="list-group-item">Color: {{car.colorName}}</li>
     <li class="list-group-item">Model Year: {{car.modelYear}}</li>
@@ -26,9 +25,22 @@
   <!-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#rentModal">
     Aracı Kirala
   </button> -->
-  <button routerLink="/rentals" type="button" class="btn btn-primary">Rent</button>
 
 </div>
+
+
+<div>
+  <div class="d-grid gap-2 mb-2">
+    <div  class="dd-grid gap-2 mb-2">
+      <div style="margin: auto;">
+        <app-rental [car] = "car"></app-rental>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="dd-grid gap-2 mb-2" *ngIf = "car.status == false">
+    <div class="alert alert-danger">Araç şu an kiralanamaz.</div>
+  </div> -->
+</div> 
 
 
 <!-- <div *ngFor="let car of cars"

@@ -12,8 +12,9 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car-detail.component.css']
 })
 export class CarDetailComponent implements OnInit {
-  cars: Car[]=[];
+  // cars: Car[]=[];
   carImages:CarImage[]=[];
+  car:Car;
   currentImage : CarImage;
   dataLoaded=false;
   imageBasePath = "https://localhost:44326/images/"
@@ -43,7 +44,7 @@ export class CarDetailComponent implements OnInit {
  
   getCarDetail(id:number){
     this.carService.getCarDetail(id).subscribe((response) =>{
-      this.cars = response.data
+      this.car = response.data[0]
       this.dataLoaded=true;
       console.log(response)
     })
