@@ -18,6 +18,7 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import {ToastrModule} from "ngx-toastr";
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
 import { DatePipe } from '@angular/common';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DatePipe } from '@angular/common';
     CarDetailComponent,
     FilterPipePipe,
     CarFilterComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
