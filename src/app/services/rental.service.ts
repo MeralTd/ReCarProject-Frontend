@@ -30,5 +30,6 @@ export class RentalService {
     let newPath = this.apiUrl + 'rentals/add'
     this.httpClient.post(newPath,rental).subscribe()
   }
+
   
 }

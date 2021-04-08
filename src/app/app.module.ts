@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule} from "@angular/forms"
+import {FormsModule, ReactiveFormsModule} from "@angular/forms"
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,7 @@ import {ToastrModule} from "ngx-toastr";
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
 import { DatePipe } from '@angular/common';
 import { PaymentComponent } from './components/payment/payment.component';
+
 
 @NgModule({
   declarations: [
@@ -40,9 +41,11 @@ import { PaymentComponent } from './components/payment/payment.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     })
+
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

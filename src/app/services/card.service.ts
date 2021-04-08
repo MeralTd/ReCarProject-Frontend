@@ -13,19 +13,19 @@ export class CardService {
   apiUrl = "https://localhost:44326/api/"
 
   constructor(private httpClient:HttpClient) { }
-  
-  saveCard(card:Card):Observable<ResponseModel>{
-    let newPath = this.apiUrl + "cards/addcard";
+
+
+  isCardExist(card : Card):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "cards/iscardexist";
+    console.log(card);
     return this.httpClient.post<ResponseModel>(newPath,card);
+  };
+  getCardByNumber(cardNumber : string) : Observable<ListResponseModel<Card>>{
+      let newPath = this.apiUrl + "cards/getbycardnumber?cardnumber=" + cardNumber;
+      return this.httpClient.get<ListResponseModel<Card>>(newPath);
   }
-
-  getCardsByUserId(userId:number):Observable<ListResponseModel<Card>>{
-    let newPath = this.apiUrl + "cards/getcardsbyuserid?userId=" + userId;
-    return this.httpClient.get<ListResponseModel<Card>>(newPath);
-  }
-
-  deleteCard(cardModel:Card):Observable<ResponseModel>{
-    let newPath = this.apiUrl + "carddetails/delete";
-    return this.httpClient.post<ResponseModel>(newPath,cardModel);
+  updateCard(card:Card){
+    let newPath = this.apiUrl + "cards/update";
+    this.httpClient.put(newPath,card);
   }
 }
