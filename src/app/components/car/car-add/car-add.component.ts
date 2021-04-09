@@ -81,6 +81,7 @@ export class CarAddComponent implements OnInit {
     this.carService.getCarDetail(id).subscribe((response) => {
       this.car = response.data[0];
       this.carForm.setValue({
+        id:this.car.id,
         brandId: this.car.brandId,
         colorId: this.car.colorId,
         modelYear: this.car.modelYear,
