@@ -43,8 +43,9 @@
         </ul>
         <div class="card-body">
             <section style="float:left">
-                <button routerLink="/cars/details/{{car.id}}" type="button" class="btn btn-primary">Details</button>
-              </section>
+              <button routerLink="/cars/details/{{car.id}}" type="button" class="btn btn-primary">Details</button>{{" "}}
+              <button routerLink="/cars/update/{{ car.id }}" type="button" class="btn btn-primary">Update</button>
+            </section>
         </div>
       </div>
       <br>

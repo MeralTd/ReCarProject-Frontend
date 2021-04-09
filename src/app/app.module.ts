@@ -19,7 +19,9 @@ import {ToastrModule} from "ngx-toastr";
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
 import { DatePipe } from '@angular/common';
 import { PaymentComponent } from './components/payment/payment.component';
-
+import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
+import { ColorAddComponent } from './components/color/color-add/color-add.component';
+import { CarAddComponent } from './components/car/car-add/car-add.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,9 @@ import { PaymentComponent } from './components/payment/payment.component';
     FilterPipePipe,
     CarFilterComponent,
     PaymentComponent,
+    BrandAddComponent,
+    ColorAddComponent,
+    CarAddComponent,
   ],
   imports: [
     BrowserModule,
