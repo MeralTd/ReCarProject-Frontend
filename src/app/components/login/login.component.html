@@ -1,7 +1,7 @@
 <body class="text-center">
     <main class="form-signin">
         <form [formGroup]="loginForm">
-        <h1 class="h3 mb-3 fw-normal">Giriş yap</h1>
+        <h1 class="h3 mb-3 fw-normal">Login</h1>
 
         <div class="form-floating">
             <input
@@ -11,7 +11,7 @@
             id="floatingInput"
             placeholder="name@example.com"
             />
-            <label for="floatingInput">E-posta</label>
+            <label for="floatingInput">E-mail</label>
         </div>
         <div class="form-floating">
             <input
@@ -21,7 +21,7 @@
             id="floatingPassword"
             placeholder="Password"
             />
-            <label for="floatingPassword">Parola</label>
+            <label for="floatingPassword">Password</label>
         </div>
 
         <div class="checkbox mb-3">
@@ -30,7 +30,7 @@
             </label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" (click)="login()">
-            Giriş yap
+            Login
         </button>
         <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
         </form>

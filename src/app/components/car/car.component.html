@@ -7,12 +7,12 @@
   <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" 
   placeholder="arama ifadesi giriniz">
 </div> -->
-<div class="mb-3">
+<!-- <div class="mb-3">
   <input class="form-control me-2" [(ngModel)]="filterText"  id="filterText"  type="search" placeholder="Search" aria-label="Search">
 </div>
 <div *ngIf="filterText.length>2" class="alert alert-success">
   {{filterText}} aradınız.
-</div>
+</div> -->
 
 
 <!-- <div class="row g-2">
@@ -29,7 +29,7 @@
 
 
 <div class="row">
-    <div *ngFor="let car of cars | filterPipe:filterText" class="col-md-4">
+    <div *ngFor="let car of cars | filterPipe:filterText" class="col-md-3">
       <div class="card" style="width: 14rem;">
         <img src="{{imageBasePath}}{{getCarImage(car)}}" class="card-img-top" alt={{car.description}}>
         <div class="card-body">

@@ -54,7 +54,7 @@ export class PaymentComponent implements OnInit {
   }
   getCustomerDetailById(customerId:number){
     this.customerService.getCustomerById(customerId).subscribe((response) =>{
-      this.customer = response.data[0];
+      this.customer = response.data;
       console.log(response);
     });
   }

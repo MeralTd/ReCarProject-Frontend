@@ -14,7 +14,7 @@ export class UserService {
   constructor(private httpClient:HttpClient) { }
 
   update(user:User):Observable<ResponseModel>{
-    return this.httpClient.post<ResponseModel>(this.apiUrl + "updateinfo" ,user);
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "update" ,user);
   }
 
   getByUserId(id:number):Observable<SingleResponseModel<User>>{

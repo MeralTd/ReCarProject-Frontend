@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NaviComponent implements OnInit {
 
+  filterText:string
   currentUserId:number;
   user:User;
 

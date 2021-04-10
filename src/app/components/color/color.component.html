@@ -1,4 +1,4 @@
- <ul class="list-group">
+ <!-- <ul class="list-group">
   <li class="list-group-item active">Colors</li>
   <li
     *ngFor="let color of colors"
@@ -8,7 +8,7 @@
   >
     {{ color.colorName }}
   </li>
-</ul>
+</ul> -->
 
 <!-- 
 <select class="form-select">
@@ -29,3 +29,28 @@
   </select>
   <label for="floatingSelectGrid">Works with selects</label>
 </div> -->
+
+
+  
+<button routerLink="add" type="button" class="btn btn-success">Add Color</button>
+
+<table *ngIf="dataLoaded==true" class="table table-striped table-hover table-responsive">
+  <thead class="table">
+      <tr>
+          <th>Color Id</th>
+          <th>Color Name</th>
+          <th>Operations</th>
+
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let color of colors">
+          <td>{{color.colorId}}</td>
+          <td>{{color.colorName}}</td>
+          <td>
+              <button routerLink="" type="button" class="btn btn-warning">Update</button>
+          </td>
+      </tr>
+  </tbody>
+  
+</table>

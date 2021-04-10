@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Rent Car</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,22 +9,22 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
+          <li *ngIf="!isAuthenticated()" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              Admin Page
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" routerLink="/cars/add">Add Car</a></li>
-              <li><a class="dropdown-item" routerLink="/brands/add">Add Brand</a></li>
-              <li><a class="dropdown-item" routerLink="/colors/add">Add Color</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" routerLink="brands">Brand List</a></li>
+              <li><a class="dropdown-item" routerLink="colors">Color List</a></li>
             </ul>
           </li>
         </ul>
+        <form for="filterText" class="d-flex">
+          <input class="form-control me-2"  [(ngModel)]="filterText"  name="filterText"  id="filterText" type="text" placeholder="Search">
+          <button class="btn btn-outline-success me-2" type="submit" routerLink="/cars/{{filterText}}">Search</button>
+        </form>
+
         <ul class="navbar-nav mr-auto">
           <li *ngIf="!isAuthenticated()" class="nav-item active">
             <button routerLink="login" type="button" class="btn btn-primary">Login</button>{{" "}}
@@ -32,7 +32,7 @@
           </li>
           <li *ngIf="isAuthenticated()">
               <div class="nav-item dropdown">
-                <a style="color: rgba(9, 193, 240, 0.521)" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                <a style="background: rgba(1, 115, 190, 0.521); color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                   data-bs-toggle="dropdown" aria-expanded="false">
                   <i style="margin-right: 10px; font-size: 1.2rem;" class="fas fa-user-circle"></i><strong
                     *ngIf="user">{{user.firstName}} {{user.lastName}}</strong>
@@ -43,28 +43,12 @@
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" routerLink="profile"><i style="margin-right: 10px;"
-                        class="fa fa-shopping-cart"></i>Orders</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" routerLink="cards"><i style="margin-right: 10px;" class="fas fa-cogs"></i>My
-                      Cards</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" routerLink="cards"><i style="margin-right: 10px;"
-                        class="fas fa-cogs"></i>Settings</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
                   <li><a class="dropdown-item" (click)="logOut()"><i style="margin-right: 10px;"
                         class="fas fa-sign-out-alt"></i>Log-Out</a></li>
                 </ul>
               </div>
           </li>
-          
-      </ul>
+        </ul>
       </div>
     </div>
   </nav>

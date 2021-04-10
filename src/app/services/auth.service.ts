@@ -15,7 +15,7 @@ export class AuthService {
 
   jwtHelper:JwtHelperService = new JwtHelperService();
   userName:string;
-  userId:number;
+  id:number;
   roles:string[];
 
   apiUrl = "https://localhost:44326/api/auth/"
@@ -48,12 +48,12 @@ export class AuthService {
     if (this.localStorageService.get("token")) {
       var decoded = this.jwtHelper.decodeToken(this.localStorageService.get("token"));
       var propUserId = Object.keys(decoded).filter(x => x.endsWith("/nameidentifier"))[0];
-      this.userId = Number(decoded[propUserId]);
+      this.id = Number(decoded[propUserId]);
     }
   }
 
   getUserId():number{
-    return this.userId;
+    return this.id;
   }
 
   // changePassword(passwordChangeModel:PasswordChangeModel):Observable<ResponseModel>{

@@ -13,7 +13,7 @@ export class CarComponent implements OnInit {
   cars: Car[] = [];
   carDetails: CarDetail[] = [];
   currentCar:Car;
-  filterText="";
+  filterText:string;
 
   imageBasePath = "https://localhost:44326/images/"
 
@@ -33,6 +33,9 @@ export class CarComponent implements OnInit {
         this.getCarsByColor(params["colorId"])
       }else{
         this.getCars();
+        if (params['filterText']) {
+          this.filterText = params['filterText'];
+        }
       }
     })
   }
