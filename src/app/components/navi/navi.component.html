@@ -24,10 +24,16 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
         </ul>
+        <ul class="navbar-nav mr-auto">
+          <li *ngIf="!isAuthenticated()" class="nav-item active">
+            <button routerLink="login" type="button" class="btn btn-primary">Login</button>{{" "}}
+            <button routerLink="register" type="button" class="btn btn-primary">Register</button>
+          </li>
+          <li *ngIf="isAuthenticated()" class="nav-item active">
+            <a class="dropdown-item" href="#">User</a>
+          </li>
+      </ul>
       </div>
     </div>
   </nav>

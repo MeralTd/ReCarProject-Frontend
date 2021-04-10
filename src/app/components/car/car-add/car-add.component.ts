@@ -67,28 +67,28 @@ export class CarAddComponent implements OnInit {
       description: ['', Validators.required],
     });
     
-    //  this.carService.getCarById(id).subscribe(response => {
-    //   this.carForm.patchValue({
-    //   id:response.data[0].id,
-    //   brandId: response.data[0].brandId,
-    //   colorId:response.data[0].colorId,
-    //   modelYear:response.data[0].modelYear,
-    //   dailyPrice:response.data[0].dailyPrice,
-    //   description:response.data[0].description,
-    // });
-    // });
-
-    this.carService.getCarDetail(id).subscribe((response) => {
-      this.car = response.data[0];
-      this.carForm.setValue({
-        id:this.car.id,
-        brandId: this.car.brandId,
-        colorId: this.car.colorId,
-        modelYear: this.car.modelYear,
-        dailyPrice: this.car.dailyPrice,
-        description: this.car.description,
-      });
+     this.carService.getCarById(id).subscribe(response => {
+      this.carForm.patchValue({
+      //id:response.data[0].id,
+      brandId: response.data.brandId,
+      colorId:response.data.colorId,
+      modelYear:response.data.modelYear,
+      dailyPrice:response.data.dailyPrice,
+      description:response.data.description,
     });
+    console.log(response)
+    });
+
+    // this.carService.getCarDetail(id).subscribe((response) => {
+    //   this.car = response.data[0];
+    //   this.carForm.setValue({
+    //     brandId: this.car.brandId,
+    //     colorId: this.car.colorId,
+    //     modelYear: this.car.modelYear,
+    //     dailyPrice: this.car.dailyPrice,
+    //     description: this.car.description,
+    //   });
+    // });
     
   }
 
