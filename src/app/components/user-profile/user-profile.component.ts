@@ -20,6 +20,7 @@ export class UserProfileComponent implements OnInit {
   //customer:Customer;
   findex:number;
 
+
   constructor(
     private authService:AuthService,
     private formBuilder:FormBuilder,
@@ -65,8 +66,9 @@ export class UserProfileComponent implements OnInit {
 
   userUpdate(){
     if (this.userUpdateForm.valid) {
-      let user = Object.assign({id:this.user.id}, this.userUpdateForm.value)
-      this.userService.update(user).subscribe(response => {
+      let userModel = Object.assign({}, this.userUpdateForm.value)
+      userModel.id = this.authService.getUserId()
+      this.userService.update(userModel).subscribe(response => {
         this.toastrService.success(response.message,"Successfully");
       },responseError => {
         this.toastrService.error(responseError.error,"Error")
@@ -78,16 +80,15 @@ export class UserProfileComponent implements OnInit {
 
   getUser(){
     this.userService.getByUserId(this.authService.getUserId()).subscribe(response => {
-      this.user = response.data;
-      //this.userUpdateForm.patchValue(response.data)
+      this.userUpdateForm.patchValue(response.data)
 
-      this.userUpdateForm.patchValue({
-        //id:this.user.id,
-        firstName: this.user.firstName,
-        lastName:this.user.lastName,
-        email:this.user.email,
+      // this.userUpdateForm.patchValue({
+      //   //id:this.user.id,
+      //   firstName: this.user.firstName,
+      //   lastName:this.user.lastName,
+      //   email:this.user.email,
           
-      });
+      // });
     })
   }
 

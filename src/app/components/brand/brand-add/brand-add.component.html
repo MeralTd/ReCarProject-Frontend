@@ -1,9 +1,9 @@
 <div class="content">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header"><h5 class="title">Add Brand</h5></div>
+            <div class="card-header"><h5 class="title">{{ currentBrandId ? "Update Brand" : "Add Brand" }}</h5></div>
             <div class="card-body">
-                <form [formGroup]="brandAddForm">
+                <form [formGroup]="brandForm">
                     <div class="mb-3">
                         <label for="brandName">Brand Name</label>
                         <div class="form-group">
@@ -16,7 +16,12 @@
                 </form>
             </div>
             <div class="card-footer">
-                <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+                <button
+                class="btn btn-fill btn-success"
+                (click)="currentBrandId ? update() : add()"
+              >
+                {{ currentBrandId ? "Update" : "Add" }}
+              </button>
             </div>
         </div>
         

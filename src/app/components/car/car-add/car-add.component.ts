@@ -44,20 +44,19 @@ export class CarAddComponent implements OnInit {
     this.activetedRoute.params.subscribe((params) => {
       if (params['car']) {
         this.operationType = 'Update';
-        this.createCarEditForm(params['car']);
+        this.createCarEditForm();
+        this.getCar(params['car']);
         
       } else {
+        this.operationType = 'Add';
         this.createCarAddForm();
     
-        this.operationType = 'Add';
       }
     });
-    // this.createCarImageAddForm();
+    //this.createCarImageAddForm();
   }
 
-  createCarEditForm(id: number) {
-    this.currentCarId = id;
-
+  createCarEditForm() {
     this.carForm = this.formBuilder.group({
       id:[''],
       brandId: ['', Validators.required],
@@ -66,18 +65,7 @@ export class CarAddComponent implements OnInit {
       dailyPrice: ['', Validators.required],
       description: ['', Validators.required],
     });
-    
-     this.carService.getCarById(id).subscribe(response => {
-      this.carForm.patchValue({
-      //id:response.data[0].id,
-      brandId: response.data.brandId,
-      colorId:response.data.colorId,
-      modelYear:response.data.modelYear,
-      dailyPrice:response.data.dailyPrice,
-      description:response.data.description,
-    });
-    console.log(response)
-    });
+
 
     // this.carService.getCarDetail(id).subscribe((response) => {
     //   this.car = response.data[0];
@@ -124,7 +112,7 @@ export class CarAddComponent implements OnInit {
   update(){
     if (this.carForm.valid) {
       let carModel = Object.assign({}, this.carForm.value);
-      carModel.id = this.car.id;
+      carModel.id = this.currentCarId;
       this.carService.updateCar(carModel).subscribe(
         (response) => {
           this.toastrService.success(response.message);
@@ -137,6 +125,8 @@ export class CarAddComponent implements OnInit {
       this.toastrService.error('Form eksik', 'Hata');
     }
   }
+
+
   getBrands(){
     this.brandService.getBrands().subscribe(response => {
       this.brands=response.data;
@@ -147,6 +137,21 @@ export class CarAddComponent implements OnInit {
     this.colorService.getColors().subscribe(response => {
       this.colors=response.data;
     })
+  }
+
+  getCar(car:number){
+    this.currentCarId =car;
+    this.carService.getCarById(car).subscribe(response => {
+      this.carForm.patchValue({
+        id:response.data.id,
+        brandId: response.data.brandId,
+        colorId:response.data.colorId,
+        modelYear:response.data.modelYear,
+        dailyPrice:response.data.dailyPrice,
+        description:response.data.description,
+    });
+    console.log(response)
+    });
   }
 
   // createCarImageAddForm(){

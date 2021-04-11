@@ -1,9 +1,9 @@
 <div class="content">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header"><h5 class="title">Add Color</h5></div>
+            <div class="card-header"><h5 class="title">{{ currentColorId ? "Update Color" : "Add Color" }}</h5></div>
             <div class="card-body">
-                <form [formGroup]="colorAddForm">
+                <form [formGroup]="colorForm">
                     <div class="mb-3">
                         <label for="colorName">Color Name</label>
                         <div class="form-group">
@@ -16,7 +16,12 @@
                 </form>
             </div>
             <div class="card-footer">
-                <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+                <button
+                class="btn btn-fill btn-success"
+                (click)="currentColorId ? update() : add()"
+              >
+                {{ currentColorId ? "Update" : "Add" }}
+              </button>
             </div>
         </div>
         

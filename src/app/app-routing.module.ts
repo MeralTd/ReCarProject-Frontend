@@ -31,7 +31,10 @@ const routes: Routes = [
 
   {path:"brands", component:BrandComponent,canActivate:[LoginGuard]},
   {path:"brands/add", component:BrandAddComponent,canActivate:[LoginGuard]},
+  {path:"brands/update/:brand",component:BrandAddComponent, canActivate:[LoginGuard]},
 
+
+  {path:"colors/update/:color", component:ColorAddComponent,canActivate:[LoginGuard]},
   {path:"colors/add", component:ColorAddComponent,canActivate:[LoginGuard]},
   {path:"colors", component:ColorComponent,canActivate:[LoginGuard]},
 
