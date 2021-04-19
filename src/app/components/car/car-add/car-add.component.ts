@@ -65,19 +65,6 @@ export class CarAddComponent implements OnInit {
       dailyPrice: ['', Validators.required],
       description: ['', Validators.required],
     });
-
-
-    // this.carService.getCarDetail(id).subscribe((response) => {
-    //   this.car = response.data[0];
-    //   this.carForm.setValue({
-    //     brandId: this.car.brandId,
-    //     colorId: this.car.colorId,
-    //     modelYear: this.car.modelYear,
-    //     dailyPrice: this.car.dailyPrice,
-    //     description: this.car.description,
-    //   });
-    // });
-    
   }
 
   createCarAddForm(){
@@ -126,6 +113,8 @@ export class CarAddComponent implements OnInit {
     }
   }
 
+  
+  
 
   getBrands(){
     this.brandService.getBrands().subscribe(response => {
@@ -150,7 +139,7 @@ export class CarAddComponent implements OnInit {
         dailyPrice:response.data.dailyPrice,
         description:response.data.description,
     });
-    console.log(response)
+    console.log(this.currentCarId)
     });
   }
 

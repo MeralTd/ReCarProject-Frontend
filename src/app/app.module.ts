@@ -45,7 +45,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     CarAddComponent,
     LoginComponent,
     RegisterComponent,
-    UserProfileComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -38,7 +38,7 @@ const routes: Routes = [
   {path:"colors/add", component:ColorAddComponent,canActivate:[LoginGuard]},
   {path:"colors", component:ColorComponent,canActivate:[LoginGuard]},
 
-  {path:"cars/add", component:CarAddComponent,canActivate:[LoginGuard]},
+  {path:"add",component:CarAddComponent, canActivate:[LoginGuard]},
   {path:"cars/update/:car",component:CarAddComponent, canActivate:[LoginGuard]},
 
   {path:"login",component:LoginComponent},
