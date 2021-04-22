@@ -22,10 +22,6 @@
     <li class="list-group-item">Model Year: {{car.modelYear}}</li>
     <li class="list-group-item">Daily Price: {{car.dailyPrice}}</li>
   </ul>
-  <!-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#rentModal">
-    Aracı Kirala
-  </button> -->
-
 </div>
 
 
@@ -33,56 +29,8 @@
   <div class="d-grid gap-2 mb-2">
     <div  class="dd-grid gap-2 mb-2">
       <div style="margin: auto;">
-        <!-- <app-rental [car] = "car"></app-rental> -->
         <app-rental [car] = "car"></app-rental>
-
       </div>
     </div>
   </div>
-  <!-- <div class="dd-grid gap-2 mb-2" *ngIf = "car.status == false">
-    <div class="alert alert-danger">Araç şu an kiralanamaz.</div>
-  </div> -->
 </div> 
-
-
-<!-- <div *ngFor="let car of cars"
-  class="modal fade" id="rentModal" tabindex="-1" aria-labelledby="rentModalLabel"aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="rentModalLabel">{{car.brandName}} Aracı Kirala</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="dailyprice" class="form-label">Günlük Ücreti</label>
-          <input type="text" disabled class="form-control" id="dailyprice" [value]="car.dailyPrice">
-        </div>
-        <div class="mb-3">
-          <label for="brand" class="form-label">Marka</label>
-          <input type="text" disabled class="form-control" id="brand" [value]="car.brandName">
-        </div>
-        <div class="mb-3">
-          <label for="name" class="form-label">Model / Renk</label>
-          <input type="text" disabled class="form-control" id="name" [value]="car.description + '/' + car.colorName">
-        </div>
-        <div class="mb-3">
-          <label for="rentdate" class="form-label">Kiralama Tarihi</label>
-          <input type="date" [min]="minDate |date:'yyyy-MM-dd'" class="form-control" id="rentdate" (change)="selectMin()" [(ngModel)]="rentDate">
-        </div>
-        <div class="mb-3">
-          <label for="returndate" class="form-label">Dönüş Tarihi</label>
-          <input type="date" [disabled]="!minSelected"  [min]="maxDate |date:'yyyy-MM-dd'"  class="form-control" id="returndate" [(ngModel)]="returnDate">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Kapat
-        </button>
-        <button
-      type="button" data-bs-dismiss="modal" class="btn btn-success"> Kirala
-        </button>
-      </div>
-    </div>
-  </div>
-</div> -->
